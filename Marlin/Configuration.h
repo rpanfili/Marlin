@@ -1335,10 +1335,10 @@
 
 #if ENABLED(Z_SAFE_HOMING)
   // as near as possible to bedplate connector
-  // #define Z_SAFE_HOMING_X_POINT ((X_BED_SIZE) / 3)
-  // #define Z_SAFE_HOMING_Y_POINT Y_BED_SIZE
-  #define Z_SAFE_HOMING_X_POINT ((X_BED_SIZE) / 2)    // X point for Z homing when homing all axes (G28).
-  #define Z_SAFE_HOMING_Y_POINT ((Y_BED_SIZE) / 2)    // Y point for Z homing when homing all axes (G28).
+  #define Z_SAFE_HOMING_X_POINT ((X_BED_SIZE) * 0.20) // 20%
+  #define Z_SAFE_HOMING_Y_POINT ((Y_BED_SIZE) * 0.96) // 96%
+  // #define Z_SAFE_HOMING_X_POINT ((X_BED_SIZE) / 2)    // X point for Z homing when homing all axes (G28).
+  // #define Z_SAFE_HOMING_Y_POINT ((Y_BED_SIZE) / 2)    // Y point for Z homing when homing all axes (G28).
 #endif
 
 // Homing speeds (mm/m)
