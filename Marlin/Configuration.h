@@ -489,9 +489,9 @@
   //#define DEFAULT_Kd 440
 
   // S200
-  #define DEFAULT_Kp 6.78
-  #define DEFAULT_Ki 0.31
-  #define DEFAULT_Kd 36.62
+  #define DEFAULT_Kp 6.89
+  #define DEFAULT_Ki 0.33
+  #define DEFAULT_Kd 36.25
 
 #endif // PIDTEMP
 
