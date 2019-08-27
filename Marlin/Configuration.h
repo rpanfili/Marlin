@@ -324,6 +324,9 @@
 #define PSU_CONTROL
 #define PSU_NAME "Power Supply"
 
+#undef PS_ON_PIN
+#define PS_ON_PIN P1_28 // X MAX
+
 #if ENABLED(PSU_CONTROL)
   #define PSU_ACTIVE_HIGH false // Set 'false' for ATX (1), 'true' for X-Box (2)
 
