@@ -491,10 +491,15 @@
   //#define DEFAULT_Ki 2.25
   //#define DEFAULT_Kd 440
 
-  // S200
-  #define DEFAULT_Kp 6.27
-  #define DEFAULT_Ki 0.28
-  #define DEFAULT_Kd 35.01
+  // S200 Lifbag heatsink - "american guy" titanium heatbreak - Zcoryv2 plus heatblock
+  //#define DEFAULT_Kp 6.27
+  //#define DEFAULT_Ki 0.28
+  //#define DEFAULT_Kd 35.01
+
+  // S200 MASP heatsink - all metal titanium heatbreak - copper heatblock paoloZ
+  #define DEFAULT_Kp 10.72
+  #define DEFAULT_Ki 0.89
+  #define DEFAULT_Kd 32.40
 
 #endif // PIDTEMP
 
