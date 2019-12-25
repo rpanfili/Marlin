@@ -496,10 +496,15 @@
   //#define DEFAULT_Ki 0.28
   //#define DEFAULT_Kd 35.01
 
-  // S200 MASP heatsink - all metal titanium heatbreak - copper heatblock paoloZ
-  #define DEFAULT_Kp 10.72
-  #define DEFAULT_Ki 0.89
-  #define DEFAULT_Kd 32.40
+  // S200 MASP heatsink - all metal titanium heatbreak - copper heatblock paoloZ - masp air
+  // #define DEFAULT_Kp 10.72
+  // #define DEFAULT_Ki 0.89
+  // #define DEFAULT_Kd 32.40
+
+  // S200 MASP heatsink - all metal titanium heatbreak - copper heatblock paoloZ - zstorm4010
+  #define DEFAULT_Kp 13.15
+  #define DEFAULT_Ki 1.33
+  #define DEFAULT_Kd 32.38
 
 #endif // PIDTEMP
 
