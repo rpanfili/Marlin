@@ -5,6 +5,11 @@ language: python
 python:
   - "2.7"
 
+branches:
+  only:
+  - travis
+  - /^s200-\d+\.\d+\.\d+$/
+
 notifications:
   email: false
 
@@ -49,8 +54,26 @@ before_script:
   - cd ${TRAVIS_BUILD_DIR}
   #
   # Generate custom version include
-  - generate_version ${TRAVIS_BUILD_DIR}/Marlin/src/inc
-  - cat ${TRAVIS_BUILD_DIR}/Marlin/src/inc/_Version.h
+  #- generate_version ${TRAVIS_BUILD_DIR}/Marlin/src/inc
+  - generate_version ${TRAVIS_BUILD_DIR}/Marlin/
+  - pwd
+  - ls -la
+  #- cat ${TRAVIS_BUILD_DIR}/Marlin/src/inc/_Version.h
+  - cat ${TRAVIS_BUILD_DIR}/Marlin/Version.h
   #
 script:
-  - run_tests ${TRAVIS_BUILD_DIR} ${TEST_PLATFORM}
+  #- run_tests ${TRAVIS_BUILD_DIR} ${TEST_PLATFORM}
+  - platformio run
+  - ls -l .pioenvs/LPC1768/firmware.bin
+
+
+deploy:
+  provider: releases
+  api_key: $GITHUB_OAUTH_TOKEN
+  file: .pioenvs/LPC1768/firmware.bin
+  skip_cleanup: true
+  overwrite: true
+  draft: true
+  on: 
+    all_branches: true
+  #   tags: true
