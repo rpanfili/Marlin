@@ -49,31 +49,35 @@ install:
   - platformio update
 
 before_script:
-  #
-  # Change current working directory to the build dir
   - cd ${TRAVIS_BUILD_DIR}
-  #
-  # Generate custom version include
-  #- generate_version ${TRAVIS_BUILD_DIR}/Marlin/src/inc
   - generate_version ${TRAVIS_BUILD_DIR}/Marlin/
-  - pwd
-  - ls -la
-  #- cat ${TRAVIS_BUILD_DIR}/Marlin/src/inc/_Version.h
   - cat ${TRAVIS_BUILD_DIR}/Marlin/Version.h
-  #
+
 script:
   #- run_tests ${TRAVIS_BUILD_DIR} ${TEST_PLATFORM}
-  - platformio run
-  - ls -l .pioenvs/LPC1768/firmware.bin
 
+  # - platformio run
+  # - ls -l .pioenvs/LPC1768/firmware.bin
+  - mkdir -p .pioenvs/LPC1768 && touch .pioenvs/LPC1768/firmware.{bin,elf}
 
+before_deploy:
+  - export RELEASE_NAME=$(echo $TRAVIS_TAG | sed -e 's/\(.*\)-/\u\1 v/')
+  - export RELEASE_DESCRIPTION=$(echo $TRAVIS_TAG | sed -e 's/\(.*\)-\(.*\)$/Version \u\2/')
+
+  - export name="NAME DELLA REV"
+  - export body="body della rel"
+    
 deploy:
   provider: releases
   api_key: $GITHUB_OAUTH_TOKEN
-  file: .pioenvs/LPC1768/firmware.bin
+  file: 
+    - .pioenvs/LPC1768/firmware.bin
+    - .pioenvs/LPC1768/firmware.elf
   skip_cleanup: true
   overwrite: true
   draft: true
+  name: ${RELEASE_NAME:-${TRAVIS_TAG:-${TRAVIS_COMMIT}}}
+  body: "$RELEASE_DESCRIPTION"
   on: 
     all_branches: true
   #   tags: true
