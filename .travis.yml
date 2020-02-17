@@ -51,7 +51,8 @@ install:
 before_script:
   - cd ${TRAVIS_BUILD_DIR}
   - generate_version ${TRAVIS_BUILD_DIR}/Marlin/
-  - cat ${TRAVIS_BUILD_DIR}/Marlin/Version.h
+  - cat ${TRAVIS_BUILD_DIR}/Marlin/Version.h 
+  - cat ${TRAVIS_BUILD_DIR}/Marlin/_Version.h 
 
 script:
   #- run_tests ${TRAVIS_BUILD_DIR} ${TEST_PLATFORM}
