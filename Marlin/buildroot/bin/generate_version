@@ -8,7 +8,7 @@
 DIR="${1}"
 
 BUILDATE=$(date '+%s')
-DISTDATE=$(date '+%Y-%m-%d %H:%M')
+DISTDATE=$(date '+%Y-%m-%dT%T%z' | sed -e 's/\([0-9]\{2\}\)\([0-9]\{2\}\)$/\1:\2/')
 
 BRANCH=$(git -C "${DIR}" symbolic-ref -q --short HEAD)
 VERSION=$(git -C "${DIR}" describe --tags --first-parent 2>/dev/null)
