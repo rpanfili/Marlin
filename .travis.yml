@@ -58,14 +58,11 @@ script:
 
   # - platformio run
   # - ls -l .pioenvs/LPC1768/firmware.bin
-  - mkdir -p .pioenvs/LPC1768 && touch .pioenvs/LPC1768/firmware.{bin,elf}
+  - mkdir -p .pioenvs/LPC1768 && echo "test" > .pioenvs/LPC1768/firmware.bin && cp .pioenvs/LPC1768/firmware.{bin,elf}
 
 before_deploy:
   - export RELEASE_NAME=$(echo $TRAVIS_TAG | sed -e 's/\(.*\)-/\u\1 v/')
   - export RELEASE_DESCRIPTION=$(echo $TRAVIS_TAG | sed -e 's/\(.*\)-\(.*\)$/Version \u\2/')
-
-  - export name="NAME DELLA REV"
-  - export body="body della rel"
     
 deploy:
   provider: releases
@@ -76,8 +73,8 @@ deploy:
   skip_cleanup: true
   overwrite: true
   draft: true
-  name: ${RELEASE_NAME:-${TRAVIS_TAG:-${TRAVIS_COMMIT}}}
-  body: "$RELEASE_DESCRIPTION"
+  name: "${RELEASE_NAME:-${TRAVIS_TAG:-${TRAVIS_COMMIT}}}"
+  body: "{$RELEASE_DESCRIPTION:-No description}"
   on: 
     all_branches: true
   #   tags: true
