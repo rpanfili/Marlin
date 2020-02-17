@@ -52,7 +52,6 @@ before_script:
   - cd ${TRAVIS_BUILD_DIR}
   - generate_version ${TRAVIS_BUILD_DIR}/Marlin/
   - cat ${TRAVIS_BUILD_DIR}/Marlin/Version.h 
-  - cat ${TRAVIS_BUILD_DIR}/Marlin/_Version.h 
 
 script:
   #- run_tests ${TRAVIS_BUILD_DIR} ${TEST_PLATFORM}
@@ -75,7 +74,7 @@ deploy:
   overwrite: true
   draft: true
   name: "${RELEASE_NAME:-${TRAVIS_TAG:-${TRAVIS_COMMIT}}}"
-  body: "{$RELEASE_DESCRIPTION:-No description}"
+  body: "${RELEASE_DESCRIPTION:-No description}"
   on: 
     all_branches: true
   #   tags: true
